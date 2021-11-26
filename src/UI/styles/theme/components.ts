@@ -16,6 +16,9 @@ const components = {
   button: {
     borderRadius: "6px",
   },
+  checkbox: {
+    borderRadius: "6px",
+  },
   tag: {
     borderRadius: "50px",
   },
