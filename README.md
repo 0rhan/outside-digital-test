@@ -8,4 +8,4 @@
 
 ## Открыть в онлайне:
 
-Ссылка на github pages: [(https://0rhan.github.io/outside-digital-test](https://0rhan.github.io/outside-digital-test)
+Ссылка на github pages: [https://0rhan.github.io/outside-digital-test](https://0rhan.github.io/outside-digital-test)
