@@ -10,6 +10,12 @@ const buttonActiveBg = (theme: Theme) =>
   `linear-gradient(${theme.effects.linearGradient})`;
 
 const Tag = styled("button")<TagProps>`
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -18,18 +24,12 @@ const Tag = styled("button")<TagProps>`
     active ? buttonActiveBg(theme) : theme.colors.gray};
   color: ${({ theme, active }) =>
     active ? theme.colors.white : theme.colors.black};
-  height: 36px;
   font-size: 14px;
   font-weight: normal;
   line-height: 24px;
   width: max-content;
   box-sizing: border-box;
   padding: 6px 12px;
-  display: flex;
-  flex: 0 1 auto;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
   &:hover {
     background: none;
     background-color: ${({ theme }) => theme.colors.gray800};

@@ -17,8 +17,16 @@ export default CloseButton;
 
 const StyledIconButton = styled(IconButton)`
   position: absolute;
-  top: 27px;
-  right: 23px;
+  top: 22px;
+  right: 22px;
+  @media (min-width: 768px) {
+    top: 27px;
+    right: 23px;
+  }
+  @media (min-width: 1440px) {
+    top: 27px;
+    right: 27px;
+  }
 `;
 
 const Icon = styled(Cross)`

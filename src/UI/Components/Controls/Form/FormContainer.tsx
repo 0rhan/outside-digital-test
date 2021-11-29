@@ -18,10 +18,11 @@ const FormContainer = styled("div")<HtmlHTMLAttributes<HTMLDivElement>>`
     border-radius: ${({ theme }) => theme.components.box.borderRadius};
     width: 453px;
     height: max-content;
-    margin-top: 120px;
+    align-self: center;
     padding: 32px 32px;
   }
   @media (min-width: 1440px) {
+    align-self: center;
     justify-items: normal;
     width: 552px;
   }
