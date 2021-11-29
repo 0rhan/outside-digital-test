@@ -32,8 +32,9 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
-    const onlyNumberRegExp = /^[^0]*[1-9]*/;
-    if (onlyNumberRegExp.test(value)) {
+    const onlyNumberRegExp = /^[^0]+[1-9]*/;
+    console.log(onlyNumberRegExp.test(value))
+    if (onlyNumberRegExp.test(value) || value.trim() === "") {
       setFieldValue(value);
     }
   };
