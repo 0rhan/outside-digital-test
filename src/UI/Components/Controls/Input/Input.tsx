@@ -13,11 +13,17 @@ const Input = ({
   onChange,
   error,
   errorMessage,
+  ...props
 }: InputProps) => {
   return (
     <InputWrapper>
       <InputLabel>{label}</InputLabel>
-      <InputBase onChange={onChange} placeholder={placeholder} error={error} />
+      <InputBase
+        onChange={onChange}
+        placeholder={placeholder}
+        error={error}
+        {...props}
+      />
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </InputWrapper>
   );

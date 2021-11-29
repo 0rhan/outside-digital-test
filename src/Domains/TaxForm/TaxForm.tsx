@@ -32,7 +32,10 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
-    setFieldValue(value);
+    const onlyNumberRegExp = /^[^0]*[1-9]*/;
+    if (onlyNumberRegExp.test(value)) {
+      setFieldValue(value);
+    }
   };
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -52,6 +55,8 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
         <TaxFormHeader onClick={handleFormClose} />
         <Input
           label="Ваша зарплата за месяц"
+          placeholder="Введите данные"
+          type="number"
           value={fieldValue}
           onChange={onChange}
           error={error}
@@ -79,7 +84,7 @@ export default TaxForm;
 const Select = styled("div")`
   margin-top: 24px;
   display: grid;
-  grid-template: repeat(2, max-content) / minmax(138px, 290px);
+  grid-template: repeat(2, max-content) / max-content;
   @media (min-width: 768px) {
     grid-template: max-content / repeat(2, max-content);
     align-items: center;

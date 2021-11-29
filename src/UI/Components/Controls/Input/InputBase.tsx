@@ -24,6 +24,14 @@ const InputBase = styled("input")<InputBaseProps>`
   transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
   transition-property: box-shadow;
   color: ${({ theme }) => theme.colors.black};
+  &[type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray900};
   }
