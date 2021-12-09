@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import { HtmlHTMLAttributes, ReactNode } from "react";
 
-const Backdrop = ({ children }: { children: ReactNode }) => {
-  return <BackdropContainer>{children}</BackdropContainer>;
+interface BackdropProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  children: ReactNode;
+}
+
+const Backdrop = ({ children, style }: BackdropProps) => {
+  return <BackdropContainer style={style}>{children}</BackdropContainer>;
 };
 
 export default Backdrop;
