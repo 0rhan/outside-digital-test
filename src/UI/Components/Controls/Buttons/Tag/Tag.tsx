@@ -19,6 +19,9 @@ const Tag = styled("button")<TagProps>`
   border: none;
   outline: none;
   cursor: pointer;
+  transition-property: background, color;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
   border-radius: ${({ theme }) => theme.components.tag.borderRadius};
   background: ${({ theme, active }) =>
     active ? buttonActiveBg(theme) : theme.colors.gray};
