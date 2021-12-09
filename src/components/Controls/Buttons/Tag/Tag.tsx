@@ -1,6 +1,6 @@
 import { Theme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ButtonProps } from "UI/Components/Controls/Buttons/types";
+import { ButtonProps } from "../types/index";
 
 interface TagProps extends ButtonProps {
   active?: boolean;

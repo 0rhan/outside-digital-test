@@ -1,5 +1,5 @@
-import Title from "UI/Components/Typography/Title";
-import Subtitle from "UI/Components/Typography/Subtitle";
+import Title from "components/Typography/Title";
+import Subtitle from "components/Typography/Subtitle";
 import styled from "@emotion/styled";
 import { MouseEventHandler } from "react";
 import CloseButton from "../CloseButton/CloseButton";
@@ -11,7 +11,7 @@ interface TaxFormHeaderProps {
 const TaxFormHeader = ({ onClick }: TaxFormHeaderProps) => {
   return (
     <HeaderContainer>
-      <CloseButton onClick={onClick}/>
+      <CloseButton onClick={onClick} />
       <Title>Налоговый вычет</Title>
       <Subtitle>
         Используйте налоговый вычет чтобы погасить ипотеку досрочно. Размер

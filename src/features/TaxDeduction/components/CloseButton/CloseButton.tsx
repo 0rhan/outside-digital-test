@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ReactComponent as Cross } from "assets/Cross.svg";
 import { ButtonHTMLAttributes } from "react";
-import IconButton from "UI/Components/Controls/Buttons/IconButton";
+import IconButton from "components/Controls/Buttons/IconButton";
 
 interface CloseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 

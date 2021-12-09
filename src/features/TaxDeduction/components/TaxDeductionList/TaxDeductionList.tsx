@@ -1,7 +1,7 @@
-import List from "UI/Components/List/List";
+import List from "components/List/List";
 import calculateTaxDeduction from "utils/calculateTaxDeduction";
 import TaxDeductionPerYear from "./TaxPerYear/TaxPerYear";
-import Regular from "UI/Components/Typography/Regular";
+import Regular from "components/Typography/Regular";
 import { v4 as uuid } from "uuid";
 import styled from "@emotion/styled";
 

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import Checkbox from "UI/Components/Controls/Checkbox/Checkbox";
-import ListItem from "UI/Components/List/ListItem";
-import Regular from "UI/Components/Typography/Regular";
-import numeralsDeclination from "../../utils/numeralsDeclination";
+import Checkbox from "components/Controls/Checkbox/Checkbox";
+import ListItem from "components/List/ListItem";
+import Regular from "components/Typography/Regular";
+import numeralsDeclination from "features/TaxDeduction/utils/numeralsDeclination";
 
 interface TaxDeductionPerYearProps {
   taxDeduction: number;

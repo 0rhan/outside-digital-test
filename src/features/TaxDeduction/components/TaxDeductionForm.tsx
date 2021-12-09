@@ -1,33 +1,23 @@
-import TextButton from "UI/Components/Controls/Buttons/TextButton/TextButton";
-import FormContainer from "UI/Components/Controls/Form/FormContainer";
-import Form from "UI/Components/Controls/Form/Form";
-import Input from "UI/Components/Controls/Input/Input";
-import Tag from "UI/Components/Controls/Buttons/Tag/Tag";
-import Regular from "UI/Components/Typography/Regular";
+import TextButton from "components/Controls/Buttons/TextButton/TextButton";
+import FormContainer from "components/Controls/Form/FormContainer";
+import Form from "components/Controls/Form/Form";
+import Input from "components/Controls/Input/Input";
+import Tag from "components/Controls/Buttons/Tag/Tag";
+import Regular from "components/Typography/Regular";
 import TaxFormHeader from "./TaxFormHeader/TaxFormHeader";
 import styled from "@emotion/styled";
-import ButtonFilled from "UI/Components/Controls/Buttons/ButtonFilled";
+import ButtonFilled from "components/Controls/Buttons/ButtonFilled";
 import TaxDeductionList from "./TaxDeductionList/TaxDeductionList";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
-import useField from "./hooks/useField";
+import useField from "../hooks/useField";
+import validate from "../utils/formValidation";
+import {ERROR_FIELD_MIN_VALUE, MIN_SALARY} from "../constants";
 
 interface TaxFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const TaxForm = ({ setIsOpen }: TaxFormProps) => {
-  const validate = (value: string) => {
-    const number = Number.parseInt(value);
-    if (number < 13890) {
-      return "Минимальная зарплата 13890";
-    }
-    if (value === "") {
-      return "Поле обязательно для заполнения";
-    }
-
-    return "";
-  };
-
+const TaxDeductionForm = ({ setIsOpen }: TaxFormProps) => {
   const {
     onChange,
     onBlur,
@@ -61,8 +51,8 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
           placeholder="Введите данные"
           type="number"
           value={fieldValue}
-          min="13890"
-          title="Только числа. Минимальная зарплата 13890"
+          min={MIN_SALARY}
+          title={ERROR_FIELD_MIN_VALUE}
           onChange={onChange}
           onBlur={onBlur}
           error={fieldError}
@@ -86,7 +76,7 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
   );
 };
 
-export default TaxForm;
+export default TaxDeductionForm;
 
 const Select = styled("div")`
   margin-top: 24px;

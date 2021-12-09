@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Portal from "UI/UtilityComponents/Portal";
+import Portal from "components/UtilityComponents/Portal";
 import Backdrop from "./Backdrop/Backdrop";
 import { animated, useTransition } from "react-spring";
 
