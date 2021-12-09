@@ -15,7 +15,8 @@ const TextButton = styled("button")<ButtonHTMLAttributes<HTMLButtonElement>>`
   flex-flow: row nowrap;
   height: 24px;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.gray900 : theme.colors.red};
   margin-top: 8px;
   font-size: 14px;
   font-weight: 500;

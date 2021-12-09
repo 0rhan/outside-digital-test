@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import InputLabel from "./InputLabel/InputLabel";
 import InputBase, { InputBaseProps } from "./InputBase";
+import { ChangeEvent } from "react";
 
 interface InputProps extends InputBaseProps {
   label: string;
-  errorMessage?: string;
 }
 
 const Input = ({
@@ -12,19 +12,31 @@ const Input = ({
   placeholder,
   onChange,
   error,
-  errorMessage,
+  type,
   ...props
 }: InputProps) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (type === "number") {
+      const { value } = event.currentTarget;
+      const regex = /^\d+$/;
+      if (regex.test(value) || value === "") {
+        if (onChange) onChange(event);
+      }
+    } else {
+      if (onChange) onChange(event);
+    }
+  };
+
   return (
     <InputWrapper>
       <InputLabel>{label}</InputLabel>
       <InputBase
-        onChange={onChange}
+        onChange={onInputChange}
         placeholder={placeholder}
         error={error}
         {...props}
       />
-      {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputWrapper>
   );
 };

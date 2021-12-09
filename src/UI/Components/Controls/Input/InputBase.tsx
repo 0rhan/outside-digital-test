@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { InputHTMLAttributes } from "react";
 
 export interface InputBaseProps extends InputHTMLAttributes<HTMLInputElement> {
-  error?: boolean;
+  error?: string;
   theme?: Theme;
 }
 

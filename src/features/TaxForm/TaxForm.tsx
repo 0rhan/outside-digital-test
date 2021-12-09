@@ -2,51 +2,53 @@ import TextButton from "UI/Components/Controls/Buttons/TextButton/TextButton";
 import FormContainer from "UI/Components/Controls/Form/FormContainer";
 import Form from "UI/Components/Controls/Form/Form";
 import Input from "UI/Components/Controls/Input/Input";
-import Tag from "UI/Components/DataDisplay/Tag/Tag";
+import Tag from "UI/Components/Controls/Buttons/Tag/Tag";
 import Regular from "UI/Components/Typography/Regular";
 import TaxFormHeader from "./TaxFormHeader/TaxFormHeader";
 import styled from "@emotion/styled";
 import ButtonFilled from "UI/Components/Controls/Buttons/ButtonFilled";
 import TaxDeductionList from "./TaxDeductionList/TaxDeductionList";
-import {
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useState,
-} from "react";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import useField from "./hooks/useField";
 
 interface TaxFormProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const TaxForm = ({ setIsOpen }: TaxFormProps) => {
+  const validate = (value: string) => {
+    const number = Number.parseInt(value);
+    if (number < 13890) {
+      return "Минимальная зарплата 13890";
+    }
+    if (value === "") {
+      return "Поле обязательно для заполнения";
+    }
+
+    return "";
+  };
+
+  const {
+    onChange,
+    onBlur,
+    fieldError,
+    fieldValue,
+    setFieldError,
+    setFieldTouched,
+  } = useField(validate);
   const [salary, setSalary] = useState<string | undefined>(undefined);
-  const [fieldValue, setFieldValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [error, setError] = useState(false);
 
   const handleFormClose = () => {
     setIsOpen(false);
   };
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
-    const onlyNumberRegExp = /^[^0]+[1-9]*/;
-    console.log(onlyNumberRegExp.test(value))
-    if (onlyNumberRegExp.test(value) || value.trim() === "") {
-      setFieldValue(value);
-    }
-  };
-
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (fieldValue) {
+    setFieldTouched(true);
+    const error = validate(fieldValue);
+    setFieldError(error);
+    if (!error) {
       setSalary(fieldValue);
-      setError(false);
-    } else {
-      setError(true);
-      setErrorMessage("Поле обязательно для заполнения");
     }
   };
 
@@ -59,11 +61,15 @@ const TaxForm = ({ setIsOpen }: TaxFormProps) => {
           placeholder="Введите данные"
           type="number"
           value={fieldValue}
+          min="13890"
+          title="Только числа. Минимальная зарплата 13890"
           onChange={onChange}
-          error={error}
-          errorMessage={errorMessage}
+          onBlur={onBlur}
+          error={fieldError}
         />
-        <TextButton type="submit">Рассчитать</TextButton>
+        <TextButton disabled={Boolean(fieldError)} type="submit">
+          Рассчитать
+        </TextButton>
         {salary && <TaxDeductionList salary={salary} />}
         <Select>
           <Regular>Что уменьшаем?</Regular>
