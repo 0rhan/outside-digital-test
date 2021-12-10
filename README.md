@@ -1,4 +1,10 @@
 
+## Демо
+
+### Mobile
+https://user-images.githubusercontent.com/33350605/145638662-d051877a-f98f-4a3b-b69c-84b31c787ad5.mp4
+
+### Desktop
 https://user-images.githubusercontent.com/33350605/145627343-033ab647-2f5f-4678-bab5-8b17d6aa3d2c.mp4
 
 ## Запуск проекта локально:
