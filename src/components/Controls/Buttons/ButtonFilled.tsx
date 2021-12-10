@@ -23,7 +23,6 @@ const ButtonFilled = styled(ButtonBase)<ButtonProps>`
 
   @media (min-width: 768px) {
     width: 389px;
-    margin-top: 40px;
   }
   @media (min-width: 1440px) {
     width: 488px;
